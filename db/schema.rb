@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_22_152933) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_23_155514) do
+  create_table "entries", force: :cascade do |t|
+    t.integer "food_id", null: false
+    t.integer "user_id", null: false
+    t.float "quantity", default: 1.0
+    t.datetime "consumed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_entries_on_food_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "unit_name"
@@ -30,4 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_22_152933) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "foods"
+  add_foreign_key "entries", "users"
 end

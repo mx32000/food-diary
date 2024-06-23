@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  food_id: one
+  user_id: one
+  quantity: 1.5
+  consumed_at: 2024-06-23 10:55:14
+
+two:
+  food_id: two
+  user_id: two
+  quantity: 1.5
+  consumed_at: 2024-06-23 10:55:14
