@@ -1,0 +1,21 @@
+%h1 Your Entries
+
+%table
+  %thead
+    %tr
+      %th Food
+      %th Quantity
+      %th Consumed At
+      %th Actions
+  %tbody
+    - @entries.each do |entry|
+      %tr
+        %td= entry.food.name
+        %td= entry.quantity
+        %td= (entry.consumed_at.presence || entry.created_at).strftime("%B %d, %Y %H:%M")
+        %td
+          = link_to 'Show', entry
+          = link_to 'Edit', edit_entry_path(entry)
+          = link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Entry', new_entry_path
