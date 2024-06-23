@@ -1,0 +1,19 @@
+%h1 New Entry
+
+= form_with(model: @entry, url: entries_path, method: :post) do |form|
+  .field
+    = form.label :food_id
+    = form.collection_select :food_id, Food.all, :id, :name, prompt: "Select a food"
+
+  .field
+    = form.label :quantity
+    = form.number_field :quantity, step: "any", min: 0.1
+
+  .field
+    = form.label :consumed_at
+    = form.datetime_local_field :consumed_at, value: DateTime.now.strftime('%Y-%m-%dT%H:%M')
+
+  .actions
+    = form.submit 'Create Entry'
+
+= link_to 'Back', entries_path

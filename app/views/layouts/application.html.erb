@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Your Entries', entries_path %></li>
+            <li><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
     <p style="color: green"><%= notice %></p>
     <p class="color: red"><%= alert %></p>
     <%= yield %>
