@@ -8,7 +8,7 @@
       %th Consumed At
       %th Actions
   %tbody
-    - @entries.each do |entry|
+    - @entries.reverse.each do |entry|
       = render entry
 
 = link_to 'New Entry', new_entry_path
