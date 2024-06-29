@@ -1,0 +1,8 @@
+%tr
+  %td= entry.food.name
+  %td= pluralize(entry.quantity, entry.food.unit_name)
+  %td= (entry.consumed_at.presence || entry.created_at).strftime("%B %d, %Y %H:%M")
+  %td
+    = link_to 'Show', entry
+    = link_to 'Edit', edit_entry_path(entry)
+    = button_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }
